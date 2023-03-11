@@ -18,8 +18,9 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Builder
 public class Scores {
+
     @Id
-    private long scoreId;
+    private String id;
     private float computerFundamental;
     private float os;
     private float cns;
