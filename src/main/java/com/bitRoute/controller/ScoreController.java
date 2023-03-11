@@ -5,6 +5,10 @@ import com.bitRoute.service.ScoreService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,10 +23,13 @@ public class ScoreController {
     private final Logger logger= LoggerFactory.getLogger(ScoreController.class);
 
     @PostMapping("/scores")
-    public Scores saveDepartment(@Valid @RequestBody Scores scores){
-//        DepartmentService service=new DepartmentServiceImpl();
+    public ResponseEntity<String> saveDepartment(@Valid @RequestBody Scores scores){
         logger.info("Inside saveScore");
-        return scoreService.saveScore(scores);
+        logger.info(scoreService.saveScore(scores).toString());
+//          return scoreService.saveScore(scores);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<>("{Suggested_Domain: None}", headers, HttpStatus.CREATED);
     }
 
 }

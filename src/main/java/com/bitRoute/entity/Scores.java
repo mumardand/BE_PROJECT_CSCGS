@@ -19,9 +19,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class Scores {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long scoreId;
-    private float ComputerFundamental;
+    private float computerFundamental;
     private float os;
     private float cns;
     private float dataBase;
