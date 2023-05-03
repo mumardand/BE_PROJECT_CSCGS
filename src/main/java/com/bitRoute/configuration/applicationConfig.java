@@ -31,6 +31,6 @@ public class applicationConfig extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "CSCGS";
+        return "mydatabase";
     }
 }

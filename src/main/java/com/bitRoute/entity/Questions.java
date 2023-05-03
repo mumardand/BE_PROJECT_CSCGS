@@ -11,11 +11,11 @@ import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
-@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "Questions")
 public class Questions {
     @Id
     private String questionId;
