@@ -1,22 +1,36 @@
 package com.bitRoute.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.mongodb.lang.NonNull;
+import lombok.*;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Document
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "SignUp")
 public class SignUP {
     @Id
+    @Indexed(unique=true)
+    private String email;
+    @NonNull
+    @NotBlank
     private String username;
+    @NonNull
+    @NotBlank
     private String password;
+    @NonNull
+    @NotBlank
+    private String firstName;
+    @NonNull
+    @NotBlank
+    private String lastName;
+    private String profession;
+    private Integer contact;
+
 }

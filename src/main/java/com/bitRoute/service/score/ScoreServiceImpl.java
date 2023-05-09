@@ -14,8 +14,6 @@ public class ScoreServiceImpl implements ScoreService {
 
     @Autowired
     private ScoreRepository scoreRepository;
-    @Autowired
-    private MongoTemplate mongoTemplate;
     @Override
     public String saveScore(Scores scores) {
         currentScore= String.valueOf(scores);

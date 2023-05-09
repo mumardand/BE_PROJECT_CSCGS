@@ -22,7 +22,7 @@ public class QuestionsController {
     @Autowired
     private QuestionsService questionsService;
 
-    private final Logger logger= LoggerFactory.getLogger(ScoreController.class);
+    private final Logger logger= LoggerFactory.getLogger(QuestionsController.class);
 
     @GetMapping("/questions")
     public ResponseEntity<String> getQuestions(){
