@@ -18,7 +18,7 @@ public class SignUpServiceImpl implements SignUpService {
     public String saveUserDetails(SignUP signUP)  {
             if(signUpRepository.findByEmail(signUP.getEmail())==null){
                 signUpRepository.save(signUP);
-                return signUP.toString();
+                return "SignUp Successful!!!";
             }
             else {
                 return " Username Already Exists!!!";
