@@ -16,18 +16,19 @@ public class QuestionsServiceImpl implements QuestionsService {
 
     @Override
     public String findQuestions() {
-
         return questionsRepository.findAll().toString();
     }
 
     @Override
-    public String findByDomainId(String domain) throws JSONException {
-        if(questionsRepository.findByDomainId(domain)==null){
-            JSONObject object=new JSONObject();
-            object.put("statusCode",404);
-            object.put("message","Question Domain Not Found!!!");
-            return (object.toString());
-        }
-        return questionsRepository.findByDomainId(domain).toString();
+    public String findByDomainId(String Domain) throws JSONException {
+            if(questionsRepository.findByDomainId(Domain)==null){
+                JSONObject object=new JSONObject();
+                object.put("statusCode",404);
+                object.put("message","Question Domain Not Found!!!");
+                return (object.toString());
+            }
+            return questionsRepository.findByDomainId(Domain).toString();
     }
+
+
 }

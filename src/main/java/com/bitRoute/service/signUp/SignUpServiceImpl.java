@@ -29,9 +29,13 @@ public class SignUpServiceImpl implements SignUpService {
     @Override
     public String findCredentials(String username) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("username",signUpRepository.findByEmail(username).getEmail());
-        jsonObject.put("password",signUpRepository.findByEmail(username).getPassword());
-        return jsonObject.toString();
-
+        if(signUpRepository.findByEmail(username)!=null) {
+            jsonObject.put("username", signUpRepository.findByEmail(username).getEmail());
+            jsonObject.put("password", signUpRepository.findByEmail(username).getPassword());
+            return jsonObject.toString();
+        }
+        else {
+            return "Username Does not Exist!!! Please Sign Up!!!";
+        }
     }
 }

@@ -21,7 +21,6 @@ public class Questions {
     private String domainId;
     private String question;
     @ElementCollection
-    private List<String> options;
-    private String answer;
+    private List<Answers> options;
     private String answerId;
 }
