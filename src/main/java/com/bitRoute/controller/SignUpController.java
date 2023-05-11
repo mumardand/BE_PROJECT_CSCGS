@@ -2,6 +2,7 @@ package com.bitRoute.controller;
 
 import com.bitRoute.entity.Scores;
 import com.bitRoute.entity.SignUP;
+import com.bitRoute.entity.SubjectDetails;
 import com.bitRoute.service.score.ScoreService;
 import com.bitRoute.service.signUp.SignUpService;
 import org.json.JSONException;
@@ -33,6 +34,7 @@ public class SignUpController {
 ////         creating UUID
 //        UUID uid = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
 //        scores.setId(String.valueOf(uid.randomUUID()));
+        SubjectDetails subjectDetails=signUP.getSubjectDetails();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return new ResponseEntity<>(signUpService.saveUserDetails(signUP), headers, HttpStatus.CREATED);

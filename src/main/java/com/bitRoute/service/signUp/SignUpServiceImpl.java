@@ -1,4 +1,5 @@
 package com.bitRoute.service.signUp;
+import com.bitRoute.entity.SubjectDetails;
 import com.mongodb.DuplicateKeyException;
 import com.mongodb.MongoWriteException;
 import org.json.JSONException;
@@ -37,5 +38,11 @@ public class SignUpServiceImpl implements SignUpService {
         else {
             return "Username Does not Exist!!! Please Sign Up!!!";
         }
+    }
+
+    @Override
+    public String findProfile(String username) {
+
+        return signUpRepository.findByEmail(username).toString();
     }
 }

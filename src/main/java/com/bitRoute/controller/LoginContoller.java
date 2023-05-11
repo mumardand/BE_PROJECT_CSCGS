@@ -21,8 +21,7 @@ import javax.validation.Valid;
 
 @RestController
 public class LoginContoller {
-//    @Autowired
-//    private LoginService loginService;
+
     @Autowired
     private SignUpService signUpService;
 

@@ -3,6 +3,7 @@ package com.bitRoute.entity;
 import com.mongodb.lang.NonNull;
 import lombok.*;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
@@ -33,5 +34,7 @@ public class SignUP {
     private String lastName;
     private String profession;
     private Integer contact;
+    @Embedded
+    private SubjectDetails subjectDetails;
 
 }
