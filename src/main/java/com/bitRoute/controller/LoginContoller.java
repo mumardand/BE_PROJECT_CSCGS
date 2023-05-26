@@ -6,6 +6,8 @@ import com.bitRoute.entity.SignUP;
 import com.bitRoute.service.questions.QuestionsService;
 import com.bitRoute.service.score.ScoreService;
 import com.bitRoute.service.signUp.SignUpService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -20,13 +22,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/api")
+@Api(value = "Login", description = "Login Api")
 public class LoginContoller {
 
     @Autowired
     private SignUpService signUpService;
 
     private final Logger logger= LoggerFactory.getLogger(LoginContoller.class);
-
+    @ApiOperation("Post Login Api")
     @PostMapping("/login")
     public ResponseEntity<String> getQuestions(@Valid @RequestBody Login login) throws JSONException {
         logger.info("Inside Login");
