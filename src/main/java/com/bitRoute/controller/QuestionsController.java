@@ -6,7 +6,9 @@ import com.bitRoute.service.questions.QuestionsService;
 import com.bitRoute.service.score.ScoreService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.bson.json.JsonObject;
 import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +44,11 @@ public class QuestionsController {
         logger.info("Inside getQuestionsByDomain");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        return ResponseEntity.status(HttpStatus.CREATED).body(questionsService.findByDomainId(domain));
+        JSONObject jsonObject = new JSONObject(questionsService.findByDomainId(domain));
+        if (jsonObject.toString().contains("statusCode"))
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("UserNameDoesNotExist");
+        else
+            return ResponseEntity.status(HttpStatus.CREATED).body(jsonObject.toString());
 //        return new ResponseEntity<>(questionsService.findByDomainId(domain), headers, HttpStatus.CREATED);
     }
 

@@ -1,5 +1,6 @@
 package com.bitRoute.entity;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 
@@ -15,6 +16,8 @@ import javax.persistence.*;
 @Document
 public class Login {
     @Id
-    private String username;
+    @ApiModelProperty(value = "Email of the user", required = true)
+    private String email;
+    @ApiModelProperty(value = "Password of the user", required = true)
     private String password;
 }
