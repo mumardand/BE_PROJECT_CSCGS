@@ -23,7 +23,7 @@ public class SpringBootApplicationCSCGS {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .paths(PathSelectors.any()).build().pathMapping("/")
+                .paths(PathSelectors.any()).build().pathMapping("/swagger")
                 .apiInfo(apiInfo()).useDefaultResponseMessages(false);
     }
 

@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class RootController {
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public static String home() {
-        return "index.html";
+@RequestMapping("/swagger")
+public class SwaggerController {
+    @RequestMapping(method = RequestMethod.GET)
+    public String swaggerUi() {
+        return "redirect:/swagger-ui.html";
     }
 }
