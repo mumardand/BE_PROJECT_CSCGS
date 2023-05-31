@@ -39,21 +39,14 @@ public class SignUpController {
     @PostMapping("/signUp")
     public ResponseEntity<String> saveUserDetails(@Valid @RequestBody SignUP signUP) throws JSONException {
         logger.info("Inside signUp");
-//        logger.info(signUpService.saveUserDetails(signUP).toString());
-////         creating UUID
-//        UUID uid = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
-//        scores.setId(String.valueOf(uid.randomUUID()));
         SubjectDetails subjectDetails = signUP.getSubjectDetails();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(signUpService.saveUserDetails(signUP));
-//        JSONObject jsonObject = new JSONObject (signUpService.saveUserDetails(signUP));
-        System.out.println(signUpService.saveUserDetails(signUP));
+        if(signUpService.saveUserDetails(signUP).equals("SignUp Successful!!!")){
+            return ResponseEntity.status(HttpStatus.CREATED).body("SignUp Successful!!!");
+        }
         if (signUpService.saveUserDetails(signUP).contains(" Username Already Exists!!!")) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username Already Exists!!!");
-        }
-        if (signUpService.saveUserDetails(signUP).contains("SignUp Successful!!!")) {
-            return ResponseEntity.status(HttpStatus.FOUND).body("SignUp Successful!!!");
         }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(signUpService.saveUserDetails(signUP).toString());
 

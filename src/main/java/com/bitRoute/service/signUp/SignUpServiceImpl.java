@@ -14,13 +14,15 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public String saveUserDetails(SignUP signUP)  {
+        System.out.println("Entered!!!!");
         System.out.println(signUpRepository.findByEmail(signUP.getEmail()));
             if(signUpRepository.findByEmail(signUP.getEmail())==null){
                 signUpRepository.save(signUP);
                 return "SignUp Successful!!!";
             }
+            else {
                 return " Username Already Exists!!!";
-
+            }
 
     }
 
