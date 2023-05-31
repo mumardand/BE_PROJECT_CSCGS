@@ -24,18 +24,18 @@ public class Scores {
     @ApiModelProperty(value = "Email of the user", required = true)
     private String email;
     @ApiModelProperty(value = "computerFundamental of the user", required = true)
-    private float programming;
+    private float program;
     @ApiModelProperty(value = "OS of the user", required = true)
-    private float operatingSystem;
+    private float OS;
     @ApiModelProperty(value = "cns of the user", required = true)
-    private float computerNetwork;
+    private float CN;
     @ApiModelProperty(value = "dataBase of the user", required = true)
-    private float softwareEngineering;
+    private float SE;
     @ApiModelProperty(value = "maths of the user", required = true)
     private float maths;
+    @ApiModelProperty(value = "algorithms of the user", required = true)
+    private float algo;
     @ApiModelProperty(value = "Programming of the user", required = true)
-    private float algorithms;
-    @ApiModelProperty(value = "Programming of the user", required = true)
-    private float computerArchitecture;
+    private float CA;
 
 }

@@ -20,7 +20,9 @@ public class Questions {
     private String questionId;
     private String domainId;
     private String question;
-    @ElementCollection
-    private List<Answers> options;
+    private String Option_A;
+    private String Option_B;
+    private String Option_C;
+    private String Option_D;
     private String answerId;
 }

@@ -1,11 +1,9 @@
 package com.bitRoute.service.questions;
 
-import com.bitRoute.entity.Questions;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.json.JSONException;
 
-import java.util.List;
-
 public interface QuestionsService {
-  public String findQuestions();
-  public List<Questions> findByDomainId(String Domain) throws JSONException;
+  public String findQuestions() throws JsonProcessingException, JSONException;
+  public String findByDomainId(String Domain) throws JSONException, JsonProcessingException;
 }

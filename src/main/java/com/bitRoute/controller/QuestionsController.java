@@ -4,6 +4,7 @@ import com.bitRoute.entity.Questions;
 import com.bitRoute.entity.Scores;
 import com.bitRoute.service.questions.QuestionsService;
 import com.bitRoute.service.score.ScoreService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.bson.json.JsonObject;
@@ -32,7 +33,7 @@ public class QuestionsController {
     private final Logger logger= LoggerFactory.getLogger(QuestionsController.class);
     @ApiOperation("Get all questions")
     @GetMapping("/questions")
-    public ResponseEntity<String> getQuestions(){
+    public ResponseEntity<String> getQuestions() throws JsonProcessingException, JSONException {
         logger.info("Inside getQuestions");
         logger.info(questionsService.findQuestions());
         HttpHeaders headers = new HttpHeaders();
@@ -44,14 +45,13 @@ public class QuestionsController {
     }
     @ApiOperation("Get questions by domain Id")
     @GetMapping("/questions/{domain}")
-    public ResponseEntity<String> getQuestionsByDomain(@PathVariable String domain) throws JSONException {
+    public ResponseEntity<String> getQuestionsByDomain(@PathVariable String domain) throws JSONException, JsonProcessingException {
         logger.info("Inside getQuestionsByDomain");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         System.out.println(questionsService.findByDomainId(domain).toString());
-//        JSONArray jsonArray = new JSONArray(questionsService.findByDomainId(domain).toString());
         List list=null;
-        List<Questions> questions=questionsService.findByDomainId(domain);
+        String questions=questionsService.findByDomainId(domain);
 
         if (questionsService.findByDomainId(domain).isEmpty())
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("UserDomainDoesNotExist");

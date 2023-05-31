@@ -1,4 +1,6 @@
 package com.bitRoute.service.signUp;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,8 +42,10 @@ public class SignUpServiceImpl implements SignUpService {
     }
 
     @Override
-    public String findProfile(String username) {
+    public String findProfile(String username) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String profile = objectMapper.writeValueAsString(signUpRepository.findByEmail(username));
 
-        return signUpRepository.findByEmail(username).toString();
+        return profile.toString();
     }
 }

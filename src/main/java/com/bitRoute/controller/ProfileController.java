@@ -2,6 +2,7 @@ package com.bitRoute.controller;
 
 import com.bitRoute.entity.Login;
 import com.bitRoute.service.signUp.SignUpService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.json.JSONException;
@@ -26,7 +27,7 @@ public class ProfileController {
     private final Logger logger= LoggerFactory.getLogger(LoginContoller.class);
     @ApiOperation("Get Profile by username")
     @GetMapping("/profile/{username}")
-    public ResponseEntity<String> getProfile(@PathVariable String username) throws JSONException {
+    public ResponseEntity<String> getProfile(@PathVariable String username) throws JSONException, JsonProcessingException {
         logger.info("Inside Profile");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

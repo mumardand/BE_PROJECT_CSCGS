@@ -1,14 +1,13 @@
 package com.bitRoute.service.questions;
 
-import com.bitRoute.entity.Questions;
+import com.bitRoute.entity.Answers;
 import com.bitRoute.repository.QuestionsRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class QuestionsServiceImpl implements QuestionsService {
@@ -16,19 +15,20 @@ public class QuestionsServiceImpl implements QuestionsService {
     private QuestionsRepository questionsRepository;
 
     @Override
-    public String findQuestions() {
-        return questionsRepository.findAll().toString();
+    public String findQuestions() throws JsonProcessingException, JSONException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String allQuestions = objectMapper.writeValueAsString(questionsRepository.findAll());
+        JSONArray array=new JSONArray(allQuestions);
+        return allQuestions.toString();
     }
 
     @Override
-    public List<Questions> findByDomainId(String Domain) throws JSONException {
-//            if(questionsRepository.findByDomainId(Domain)==null){
-//                JSONObject object=new JSONObject();
-//                object.put("statusCode",404);
-//                object.put("message","Question Domain Not Found!!!");
-//                return (object.toString());
-//            }
-            return questionsRepository.findByDomainId(Domain);
+    public String findByDomainId(String Domain) throws JSONException, JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String questions = objectMapper.writeValueAsString(questionsRepository.findByDomainId(Domain));
+
+        return questions.toString();
     }
 
 
